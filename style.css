@@ -8,16 +8,10 @@ ul{
 html{
     scroll-behavior: smooth;
 }
-@font-face {
-  font-family: 'minha-fonte';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: ur('minha-fonte.woff2') format('woff2');
-}
+
 body{
   margin: 0px;
-  font-family: Arial, 'minha-fonte', sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #0a0017;
   z-index: 1;
   background-image: 
@@ -101,13 +95,13 @@ p{
     color: #5c5c5c;
     font-size: 16px;
     margin: 0;
-    font-family: Arial, 'minha-fonte';
+    font-family: Arial;
     font-weight: bold;
     margin-top: 5px;
 }
 h1{
     font-size: 118px;
-    font-family: 'minha-fonte', sans-serif;
+    font-family:sans-serif;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(155deg,#e2dee4, #a958eb,#e92609 ) ;
@@ -182,7 +176,7 @@ span{
 }
 h2{
     font-size: 25px;
-    font-family: 'minha-fonte', sans-serif;
+    font-family: sans-serif;
     margin-left: 15px;
     color: #333;
 }
@@ -203,7 +197,7 @@ h2{
 }
 .title-2 h2{
     font-size: 50px;
-    font-family: 'minha-fonte', sans-serif;
+    font-family: sans-serif;
     margin-left: 200px;
     margin-top: 0px;
     color: #fff;
@@ -219,7 +213,7 @@ h2{
 }
 .card h6{
     font-size: 15px;
-    font-family: 'minha-fonte', sans-serif;
+    font-family: sans-serif;
     color: #ffffff;
     margin-bottom: 20px;
 }
@@ -372,7 +366,7 @@ padding: 0 20px;
  background-color:#1c042b72 ; 
  color: #fff;
  padding: 40px;
- font-family: 'minha-fonte';
+ font-family: sans-serif;
 }
 .experiencia{
     border-bottom: 1px solid #30363d;
@@ -417,7 +411,7 @@ padding-left:0px; /* alinha a lista com o título*/
 }
 
 .label {
-    font-family: 'minha-fonte';
+    font-family: sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
   color: #7d22cd;
@@ -442,6 +436,7 @@ padding-left:0px; /* alinha a lista com o título*/
    margin-left: 100px;
   padding-left: 60px;
   margin-top: 80px;
+  margin-bottom: 250px;
 }
 
 /* O Card Individual */
@@ -505,7 +500,7 @@ padding-left:0px; /* alinha a lista com o título*/
   color: #8f12e9;
   font-weight: 600;
 }
-.parte-final{
+#parte-final{
     background-color: #110518;
     height:100% ;
     width: 100%;
@@ -586,11 +581,34 @@ margin: 0%;
 .footer{
     height: 100%;
     width: 100%;
-    background-color: #2a0e40;
+    background-color: #09040d;
 }
-#fo{
+.footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+    box-sizing: border-box;
+}
+/* EXTRA: Largura da barra de rolagem - ensinado por Matheus Battisti - hora de codar*/
+::-webkit-scrollbar {
+  width: 10px;               /* Largura da barra vertical */
+  height: 10px;              /* Altura da barra horizontal */
+}
+
+/* 2. Fundo da barra */
+::-webkit-scrollbar-track {
+  background: #050a12;       /* Mesma cor do seu fundo para ela "sumir" */
+}
+
+/* 3. A parte que desliza  */
+::-webkit-scrollbar-thumb {
+  background: #30363d;       /* Um cinza escuro discreto */
+  border-radius: 10px;       /* Deixa ela arredondada */
+  border: 2px solid #050a12; /* Cria um espaço ao redor da barra */
+}
+
+/* 4. hover para estilizar */
+::-webkit-scrollbar-thumb:hover {
+  background: #630cdd;       
 }
