@@ -13,7 +13,7 @@ html{
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('minha-fonte.woff2') format('woff2');
+  src: ur('minha-fonte.woff2') format('woff2');
 }
 body{
   margin: 0px;
