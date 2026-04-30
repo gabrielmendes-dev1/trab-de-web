@@ -2,75 +2,130 @@
 /*cor de fundo padrão - #0a0017, cor de fundo dois - #260e34 */
 /*backdrop-filter: blur( "x"px) - quato mais px mais desfoque gera */
 /*estudar ::after e ::before (pseudo-elementos), estudar também o "overflow:hidden"-para esconder oque estiver fora da div*/
-ul{
-    list-style-type: disc;    /*cod para definir cor padrão da lista para poder manipular ela posteriormente*/
+:root {
+    /*o ":root é usado para definir cores padrões aq no css"*/
+    /* TEMA ESCURO (padrão) */
+    --bg-principal: #0a0017;
+    /*essas são as variáveis de cor*/
+    --bg-gradient-1: rgb(52, 12, 81);
+    --bg-gradient-2: rgba(205, 76, 21, 0.289);
+    --texto: #ffffff;
+    --texto-principal: #f7f7f7;
+    --texto-secundario: #5c5c5c;
+    --card-bg: #1d01423f;
+    --borda-card: #8e8e8e;
+    --accent: #8f1fec;
 }
-html{
+
+body.light-mode {
+    background-color: #ffffff;
+    /* Fundo branco */
+    color: #000000;
+    /* Texto preto */
+}
+
+.light-mode {
+    /* TEMA CLARO */
+    --bg-principal: #c6c6c6;
+    --bg-gradient-1: rgba(143, 31, 236, 0.1);
+    --bg-gradient-2: rgba(243, 13, 13, 0.1);
+    --texto-principal: #1a0625;
+    --texto-secundario: #000;
+    --card-bg: #c0bfbf;
+    --borda-card: #000000;
+    --accent: #6f00ff;
+    --hover: #6600ff;
+    --texto: #000;
+}
+
+ul {
+    list-style-type: disc;
+    /*cod para definir cor padrão da lista para poder manipular ela posteriormente*/
+}
+
+html {
     scroll-behavior: smooth;
 }
 
-body{
-  margin: 0px;
-  font-family: Arial, sans-serif;
-  background-color: #0a0017;
-  z-index: 1;
-  background-image: 
-    radial-gradient(at 250px 300px, rgb(52, 12, 81) 1px, transparent 130px), 
-    radial-gradient(at 1200px 500px, rgba(205, 76, 21, 0.289) 1px, transparent 100px );
+body {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-principal);
+    /*usado para poder ser alterado com js*/
+    color: var(--texto-principal);
+    /*mesma coisa*/
+    z-index: 1;
+    background-image:
+        radial-gradient(circle at 18% 5%, var(--bg-gradient-1) 1px, transparent 4%),
+        radial-gradient(circle at 82% 9%, var(--bg-gradient-2) 1px, transparent 4%);
+    box-sizing: border-box;
+    transition: 0.3 ease;
+    /*para a troca de cor ser um pouco suave*/
 }
-nav{
-    background-color: rgba(26, 6, 37, 0);
+
+nav {
+    background-color: transparent;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-     position: sticky;
-     top: 0;
-     width: 100%;
+    position: sticky;
+    top: 0;
+    width: 100%;
     z-index: 1000;
     margin-bottom: 100px;
 }
-header, nav{
-  
-  min-height: 0px;
-  margin-top: 0px;
+
+header,
+nav {
+
+    min-height: 0px;
+    margin-top: 0px;
 }
-.display{
-  display: flex;
-  align-items: center;
-  padding: 10px 40px;
+
+.display {
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    justify-content: space-between;
 }
-.item1{
+
+.item1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(155deg,#ceaddf,  #8f1fec ,#f30d0d ) ;
+    background-image: linear-gradient(155deg, #ceaddf, #8f1fec, #f30d0d);
     font-size: 16px;
     display: flex;
     align-items: flex-start;
-    
+
 }
-.nav-right{
+
+.nav-right {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.a{
+
+.a {
     display: flex;
     font-size: 17px;
-    margin-left: 820px;
     gap: 20px;
 }
-.a a{
-    color: #5c5c5c;
+
+.a a {
+    color: var(--texto-secundario);
     text-decoration: none;
     transition: 0.2s ease-out;
 }
-.a a:hover{
-    color: #e2dee4;
+
+.a a:hover {
+    color: var(--accent);
 }
-.lk{
+
+.lk {
     font-size: 16px;
-    margin-left:20px;
+    margin-left: 20px;
 }
-.lk a{
+
+.lk a {
     padding: 7px 10px;
     color: #5c5c5c;
     border: 2px solid #5c5c5c;
@@ -78,12 +133,13 @@ header, nav{
     text-decoration: none;
     transition: 0.3s ease-in;
 }
-.lk a:hover{
+
+.lk a:hover {
     color: #9b4cdc;
     border-color: #9b4cdc;
 }
-.cab
-{
+
+.cab {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,53 +147,62 @@ header, nav{
     text-align: center;
     margin-top: 0px;
 }
-p{
-    color: #5c5c5c;
+
+p {
+    color: var(--texto-secundario);
     font-size: 16px;
     margin: 0;
     font-family: Arial;
     font-weight: bold;
     margin-top: 5px;
 }
-h1{
+
+h1 {
     font-size: 118px;
-    font-family:sans-serif;
+    font-family: sans-serif;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(155deg,#e2dee4, #a958eb,#e92609 ) ;
+    background-image: linear-gradient(155deg, #e2dee4, #a958eb, #e92609);
     margin-top: 8px;
     margin-bottom: 30px;
 }
-#pc{
+
+#pc {
     font-size: 18px;
     max-width: 600px;
     margin-top: 0px;
+    color: var(--texto-secundario);
 }
-span{
-    color: #f7f7f7;
+
+span {
+    color: var(--texto-principal);
     font-weight: bold;
     font-size: 19px;
 }
-.mini-container{
-  display: flex;            
-  justify-content: center; 
-  align-items: center;
-  text-align: center;            
-  gap: 35px;
-  margin-top:10px;
+
+.mini-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+    margin-top: 10px;
 }
+
 .mini-container h4 {
- font-size: 30px;        
- font-family: 'minha-fonte', sans-serif;
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent;
- background-image: linear-gradient(155deg,#e2dee4, #a958eb,#d42c12);
- margin-bottom: 2px;
+    font-size: 30px;
+    font-family: 'minha-fonte', sans-serif;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(155deg, #e2dee4, #a958eb, #d42c12);
+    margin-bottom: 2px;
 }
+
 .mini-container p {
-  font-size: 14px;         
+    font-size: 14px;
 }
- .botoes{
+
+.botoes {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,7 +210,8 @@ span{
     margin-top: 80px;
     margin-bottom: 180px;
 }
-.btn a{
+
+.btn a {
     padding: 10px 20px;
     background-color: rgba(109, 17, 159, 0.36);
     border: 1px solid #8716c9;
@@ -156,12 +222,14 @@ span{
     font-weight: 700;
     text-decoration: none;
 }
-.btn a:hover{
+
+.btn a:hover {
     background-color: rgba(109, 17, 159, 0.6);
     border-color: #921fdf;
     box-shadow: #8f1dd1 0px 0px 20px;
 }
-.btn2 a{
+
+.btn2 a {
     padding: 10px 20px;
     border: 1px solid #333;
     color: #333;
@@ -170,39 +238,44 @@ span{
     max-width: 200px;
     text-decoration: none;
 }
-.btn2 a:hover{
+
+.btn2 a:hover {
     border-color: #878787;
     color: #939393;
 }
-h2{
+
+h2 {
     font-size: 25px;
     font-family: sans-serif;
     margin-left: 15px;
     color: #333;
 }
-.title-2{
+
+.title-2 {
     display: flex;
     align-items: left;
     justify-content: left;
     flex-direction: column;
     margin: 0px;
-    margin-left: 50;
 }
-.title-2 h5{
-    color: #a1a1a1;
+
+.title-2 h5 {
+    color: var(--texto-secundario);
     margin-left: 200px;
     text-transform: uppercase;
     font-weight: 100;
     font-size: small;
 }
-.title-2 h2{
+
+.title-2 h2 {
     font-size: 50px;
     font-family: sans-serif;
     margin-left: 200px;
     margin-top: 0px;
-    color: #fff;
+    color: var(--texto-principal);
 }
-.card{
+
+.card {
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
@@ -211,361 +284,445 @@ h2{
     gap: 0px;
     margin: 0 auto;
 }
-.card h6{
+
+.card h6 {
     font-size: 15px;
     font-family: sans-serif;
-    color: #ffffff;
+    color: var(--accent);
     margin-bottom: 20px;
 }
-.card p{
+
+.card p {
     font-size: 14px;
     color: #6d6d6d;
     max-width: 400px;
 }
-.cards{
+
+.cards {
     padding: 10px 15px 30px 25px;
     transition: 0.3s ease;
     position: relative;
 }
-.cards-lt1{
+
+.cards-lt1 {
     padding: 10px 15px 30px 25px;
     transition: 0.3s ease;
     position: relative;
 }
-.cards-lt2{
+
+.cards-lt2 {
     padding: 10px 15px 30px 25px;
     transition: 0.3s ease;
     position: relative;
 }
-.cards:hover, .cards-lt1:hover, .cards-lt2:hover{
+
+.cards:hover,
+.cards-lt1:hover,
+.cards-lt2:hover {
     background-color: rgba(59, 11, 85, 0.36);
 }
-.cards-lt1:hover{
+
+.cards-lt1:hover {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 }
-.cards-lt2:hover{
+
+.cards-lt2:hover {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+
 /*PSEUDO ELEMENTS - elementos criados no css (muito top!)*/
-.cards-lt1 ::before, .cards-lt2 ::before, .cards ::before{
-    content: "";  
-    background: linear-gradient(155deg,#3a1eda,  #8f1fec ,#f30d0d );
+.cards-lt1 ::before,
+.cards-lt2 ::before,
+.cards ::before {
+    content: "";
+    background: linear-gradient(155deg, #3a1eda, #8f1fec, #f30d0d);
     position: absolute;
-    top: 25px;  /*distancia entre o elemento e o topo*/
-    left: 20px;   /*distancia entre o elemento e a esquerda*/
+    top: 25px;
+    /*distancia entre o elemento e o topo*/
+    left: 20px;
+    /*distancia entre o elemento e a esquerda*/
     width: 50px;
     height: 2px;
 }
-.cards-lt1 ::after, .cards ::after{
-    content: ""; /*não há string*/
+
+.cards-lt1 ::after,
+.cards ::after {
+    content: "";
+    /*não há string*/
     position: absolute;
     background-color: rgba(26, 6, 37, 0.447);
     width: 2px;
     height: 180px;
-    bottom: 0px;  /*distancia entre o elemento e o fundo*/
-    right: 0px;   /*distancia entre o elemento e a direita*/
+    bottom: 0px;
+    /*distancia entre o elemento e o fundo*/
+    right: 0px;
+    /*distancia entre o elemento e a direita*/
 }
-h5{
-    color: #a1a1a1;
+
+h5 {
+    color: var(--accent);
     margin-left: 150px;
     text-transform: uppercase;
     font-weight: 100;
     font-size: small;
     margin-bottom: 0px;
 }
-.abs{
+
+.abs {
     display: grid;
-   grid-template-columns: repeat(4,1fr);
-   gap: 20px;
-   padding: 20px;
-   max-width: 1200px;
-   margin-left: 130px;
-   margin-bottom: 160px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 175px;
 }
-.abs h6{
+
+.abs h6 {
     margin-left: 20px;
     margin-bottom: 5px;
 }
-#cor1,#cor2,#cor3,#cor4,#cor5,#cor6{
-    background:#1d01423f;
-    border: 1px solid #8e8e8e;
+
+#cor1,
+#cor2,
+#cor3,
+#cor4,
+#cor5,
+#cor6 {
+    background: var(--card-bg);
+    border: 3px solid var(--borda-card);
     border-radius: 15px;
     padding: 20px;
-    color: #fff;
+    color: var(--texto-principal);
 }
-#cor1{
-    border-top: 3px solid #ff00dd;;
+
+#cor1 {
+    border-top: 3px solid #ff00dd;
+    ;
 }
-#cor1 h6{
+
+#cor1 h6 {
     color: #ff00dd;
 }
-#cor1 ::marker{
+
+#cor1 ::marker {
     color: #ff00dd;
 }
-#cor2{
+
+#cor2 {
     border-top: 3px solid #6f00ff;
 }
-#cor2 h6{
+
+#cor2 h6 {
     color: #6f00ff;
 }
-#cor2 ::marker{
+
+#cor2 ::marker {
     color: #6f00ff;
 }
-#cor3{
+
+#cor3 {
     border-top: 3px solid #2a0edc;
 }
-#cor3 ::marker{
+
+#cor3 ::marker {
     color: #2a0edc;
 }
-#cor3 h6{
+
+#cor3 h6 {
     color: #2a0edc;
 }
-#cor4{
+
+#cor4 {
     border-top: 3px solid #00ff00;
 }
-#cor4 h6{
+
+#cor4 h6 {
     color: #00ff00;
 }
-#cor4 ::marker{
+
+#cor4 ::marker {
     color: #00ff00;
 }
-#cor5{
+
+#cor5 {
     border-top: 3px solid #528ce3;
 }
-#cor5 h6{
+
+#cor5 h6 {
     color: #528ce3;
 }
-#cor5 ::marker{
+
+#cor5 ::marker {
     color: #528ce3;
 }
-#cor6{
+
+#cor6 {
     border-top: 3px solid #ff5e00;
 }
-#cor6 h6{
+
+#cor6 h6 {
     color: #ff5e00;
 }
-#cor6 ::marker{
+
+#cor6 ::marker {
     color: #ff5e00;
 }
-section h2{
+
+section h2 {
     color: #fff;
     font-size: 2.3rem;
 }
-section h2,h3,p{
-margin-left: 0px;
-padding-left: 0px;
+
+section h2,
+h3,
+p {
+    margin-left: 0px;
+    padding-left: 0px;
 }
-.container-1{
-max-width: 1000px;
-margin: 0 auto;
-padding: 0 20px;
+
+.container-1 {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
-#trajetoria{
- background-color:#1c042b72 ; 
- color: #fff;
- padding: 40px;
- font-family: sans-serif;
+
+#trajetoria {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    padding: 40px;
+    font-family: sans-serif;
 }
-.experiencia{
+
+.experiencia {
     border-bottom: 1px solid #30363d;
     padding: 30px 0px;
 }
-.cab1-3{
-    display:flex;
+
+.cab1-3 {
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width:100%;
+    width: 100%;
     margin-bottom: 15px;
 }
-.cab1-3 h3{
+
+.cab1-3 h3 {
     margin: 0px;
     font-size: 1.2rem;
 }
-.empresas{
-    color:#6f00ff;
+
+.empresas {
+    color: #6f00ff;
     margin-top: 5px;
 }
-.data{
- font-size: 0.9rem;
- font-weight: bold;
- color: #858586;
+
+.data {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--accent);
 }
-.lista-abs{
-padding-left:0px; /* alinha a lista com o título*/
+
+.lista-abs {
+    padding-left: 0px;
+    /* alinha a lista com o título*/
 }
-.lista-abs li{
- color: #d5d5d5;
+
+.lista-abs li {
+    color: var(--texto);
 }
-.experiencia-f{ /*para tirar a linha do bottom do ultimo container*/
- padding: 30px 0px;
- margin-bottom: 90px;
+
+.experiencia-f {
+    /*para tirar a linha do bottom do ultimo container*/
+    padding: 30px 0px;
+    margin-bottom: 90px;
 }
+
 /*penúltima parte (a mais difícil)*/
 
 .main-header {
-  margin-bottom: 40px; /* Espaço entre o título e os cards */
-  text-align: left;
-  margin-top:200px;
+    margin-bottom: 40px;
+    /* Espaço entre o título e os cards */
+    text-align: left;
+    margin-top: 200px;
 }
 
 .label {
     font-family: sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #7d22cd;
-  font-weight: 100;
-  margin-left: 165px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #7d22cd;
+    font-weight: 100;
+    margin-left: 165px;
 }
 
 .main-title {
-  font-size: 42px;
-  margin-bottom: 0px;
-  font-weight: 800;
-  margin-left: 100px;
-  padding-left: 60px;
+    font-size: 42px;
+    margin-bottom: 0px;
+    font-weight: 800;
+    margin-left: 100px;
+    padding-left: 60px;
 }
 
 /*  Container Flex */
 .container-grid {
-  display: flex;          /* Coloca os itens em linha */
-  flex-wrap: wrap;
-  gap: 30px;            
-  justify-content: flex-start; /* Alinha tudo à esquerda */
-   margin-left: 100px;
-  padding-left: 60px;
-  margin-top: 80px;
-  margin-bottom: 250px;
+    display: flex;
+    /* Coloca os itens em linha */
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+    /* Alinha tudo à esquerda */
+    margin-left: 100px;
+    padding-left: 60px;
+    margin-top: 80px;
+    margin-bottom: 250px;
 }
 
 /* O Card Individual */
 .project-card {
-  background-color: #0d1624; /* Cor de fundo do card */
-  width: 380px;              /* Largura fixa do card */
-  border-radius: 12px;
-  overflow: hidden;          /* Corta a imagem nas pontas arredondadas */
+    background-color: var(--card-bg);
+    /* Cor de fundo do card */
+    width: 380px;
+    /* Largura fixa do card */
+    border-radius: 12px;
+    overflow: hidden;
+    /* Corta a imagem nas pontas arredondadas */
 }
+
 .card-image {
-  position: relative;
-  width: 100%;
-  height: 210px;
+    position: relative;
+    width: 100%;
+    height: 210px;
 }
 
 .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ajusta a foto para não distorcer */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ajusta a foto para não distorcer */
 }
 
 .img-tag {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 4px 10px;
-  font-size: 10px;
-  font-weight: bold;
-  border-radius: 4px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 4px;
 }
 
 /* 5. Espaçamento Interno do Texto */
 .card-content {
-  padding: 25px; /* Margem interna do texto */
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+    padding: 25px;
+    /* Margem interna do texto */
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .project-year {
-  font-size: 11px;
-  color: #8b949e;
-  margin-bottom: 10px;
+    font-size: 11px;
+    color: var(--texto-secundario);
+    margin-bottom: 10px;
 }
 
 .project-name {
-  font-size: 20px;
-  margin: 0 0 15px 0;
-  line-height: 1.2;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
 }
 
 .project-desc {
-  font-size: 14px;
-  color: #8b949e;
-  line-height: 1.5;
-  margin-bottom: 25px;
+    font-size: 14px;
+    color: var(--texto-secundario);
+    line-height: 1.5;
+    margin-bottom: 25px;
 }
 
 .project-stats {
-  font-size: 12px;
-  color: #8f12e9;
-  font-weight: 600;
+    font-size: 12px;
+    color: #8f12e9;
+    font-weight: 600;
 }
-#parte-final{
-    background-color: #110518;
-    height:100% ;
+
+#parte-final {
+    background-color: var(--bg-principal);
+    height: 100%;
     width: 100%;
 }
-.container-final{
-display: grid;
-align-items: center;
-justify-content: center;
-padding: 200px;
+
+.container-final {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 200px;
 }
-.title-f{
+
+.title-f {
     text-align: center;
     max-width: 500px;
     margin: 0 auto;
 }
-.title-f h6{
-color: #939393;
-font-weight: 100;
-font-size:medium;
-padding-bottom: 0%;
-padding: 0%;
-margin: 0%;
+
+.title-f h6 {
+    color: #939393;
+    font-weight: 100;
+    font-size: medium;
+    padding-bottom: 0%;
+    padding: 0%;
+    margin: 0%;
 }
-.title-f h2{  
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent;
- background-image: linear-gradient(155deg,#ceaddf,  #8f1fec ,#f30d0d);
- font-size: 50px;
- padding: 0%;
- margin-top:20px;
- margin-bottom: 40px;
+
+.title-f h2 {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(155deg, #ceaddf, #8f1fec, #f30d0d);
+    font-size: 50px;
+    padding: 0%;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
-.item-f{
+
+.item-f {
     text-align: center;
     max-width: 600px;
     margin-bottom: 50px;
 }
-.bottom-f a{ 
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   text-decoration: none;
-   color: #8f1fec;
-   border: 1px solid #8f1fec;
-   background-color: #2a0e40 ;
-   transition: 0.3s ease-in;
-   padding: 10px 20px;
-   max-width: 300px;
-   border-radius: 5px;
-   margin: 0 auto;
+
+.bottom-f a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #8f1fec;
+    border: 1px solid #8f1fec;
+    background-color: #2a0e40;
+    transition: 0.3s ease-in;
+    padding: 10px 20px;
+    max-width: 300px;
+    border-radius: 5px;
+    margin: 0 auto;
 
 }
-.bottom-f a:hover{
-   color: #8813e8;
-   border: 1px solid #890bf1;
-   background-color: #3b135a ;
-   box-shadow: #8f1fec 0 0 10px;
+
+.bottom-f a:hover {
+    color: #8813e8;
+    border: 1px solid #890bf1;
+    background-color: #3b135a;
+    box-shadow: #8f1fec 0 0 10px;
 }
-.btns-f{
- display: flex;
- align-items: center;
- justify-content: center;
- gap: 20px;
- margin-top: 30px;   
+
+.btns-f {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
 }
+
 .btn-f {
     border: 1px solid #7b7b7b;
     padding: 5px 10px;
@@ -574,41 +731,254 @@ margin: 0%;
     color: #7b7b7b;
     text-decoration: none;
 }
-.btn-f:hover{
-    color: #aaa;
-    border: 1px solid #e6e3e3;
+
+.btn-f:hover {
+    color: var(--accent);
+    border: 1px solid var(--accent);
 }
-.footer{
+
+.footer {
     height: 100%;
     width: 100%;
-    background-color: #09040d;
+    background-color: var(--bg-principal);
 }
-.footer{
+
+.footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     box-sizing: border-box;
 }
+
 /* EXTRA: Largura da barra de rolagem - ensinado por Matheus Battisti - hora de codar*/
 ::-webkit-scrollbar {
-  width: 10px;               /* Largura da barra vertical */
-  height: 10px;              /* Altura da barra horizontal */
+    width: 10px;
+    /* Largura da barra vertical */
+    height: 10px;
+    /* Altura da barra horizontal */
 }
 
 /* 2. Fundo da barra */
 ::-webkit-scrollbar-track {
-  background: #050a12;       /* Mesma cor do seu fundo para ela "sumir" */
+    background: #050a12;
+    /* Mesma cor do seu fundo para ela "sumir" */
 }
 
 /* 3. A parte que desliza  */
 ::-webkit-scrollbar-thumb {
-  background: #30363d;       /* Um cinza escuro discreto */
-  border-radius: 10px;       /* Deixa ela arredondada */
-  border: 2px solid #050a12; /* Cria um espaço ao redor da barra */
+    background: #30363d;
+    /* Um cinza escuro discreto */
+    border-radius: 10px;
+    /* Deixa ela arredondada */
+    border: 2px solid #050a12;
+    /* Cria um espaço ao redor da barra */
 }
 
 /* 4. hover para estilizar */
 ::-webkit-scrollbar-thumb:hover {
-  background: #630cdd;       
+    background: #630cdd;
+}
+
+/*deafio: deixar reponsivo*/
+
+/*medidas para cada plataforma:*/
+/*Celulares: < 480px a 576px
+Tablets/iPads: 481px a 768px
+Laptops/Telas Pequenas: 769px a 1024px
+Desktops/Monitores: > 1025px ou 1200px*/
+/* Media Query para Tablets e Celulares (telas menores que 1024px) */
+@media screen and (max-width: 1024px) {
+
+    /*Título */
+    h1 {
+        font-size: 70px;
+    }
+
+    /* Zerando margens específicas para não acabar quebarndo o código*/
+    .title-2 h2,
+    .title-2 h5,
+    .label,
+    .main-title,
+    .container-grid {
+        margin-left: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Transformando as grades de 4 colunas em 2 colunas */
+    .abs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Ajustando os cards de projeto */
+    .project-card {
+        width: 100%;
+        /* Ocupa a largura disponível */
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .container-grid {
+        justify-content: center;
+    }
+}
+
+/* Media Query específica para Celulares  */
+@media screen and (max-width: 768px) {
+
+    /* Empilhando os itens */
+    .display {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-right {
+        display: none;
+        /*menu escondido - tecnicamente ele foi retirado*/
+    }
+
+    .a {
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Títulos menores para caber no celular */
+    h1 {
+        font-size: 48px;
+    }
+
+    .title-2 h2,
+    .title-f h2 {
+        font-size: 32px;
+    }
+
+    /* Transformando tudo que é Flex/Grid horizontal em Vertical */
+    .card,
+    .abs,
+    .mini-container,
+    .botoes,
+    .cab1-3 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .abs {
+        grid-template-columns: 1fr;
+        /* Uma coluna só */
+    }
+
+    /* Ajustando o  padding  */
+    .container-final {
+        padding: 50px 20px;
+    }
+
+    /* Ajuste dos cards horizontais (seção .card) */
+    .card {
+        padding: 20px;
+    }
+
+    .card p {
+        max-width: 100%;
+    }
+}
+
+/*desafio 2: tentar colocar algo de js - algo básico pelo menos*/
+/*modo claro e escuro - CREDIT: Coding with Luiz*/
+/*feito antes do "ul"*/
+/* Estilo geral dos SVGs dentro do botão */
+#theme-switch svg {
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s ease;
+}
+
+/* --- tema escuro --- */
+.icon-dark {
+    display: none;
+}
+
+/* Esconde a lua quando ta no escuro */
+.icon-light {
+    display: block;
+}
+
+/* Mostra só o sol*/
+
+.icon-light svg {
+    fill: #fff;
+}
+
+/* --- TEMA CLARO (.light-mode) --- */
+/*obs: esse light-mode não existe no html, ele é inserido no body com js quando clicamos no botão*/
+.light-mode .icon-light { 
+    display: none; /* Esconde o sol quando ta no claro */
+}
+
+.light-mode .icon-dark {
+    display: block; /* Mostra só a lua*/
+}
+.light-mode .icon-dark svg {
+    fill: #000000; /* cor da lua para fazer um contraste */
+}
+   
+
+/* Estilizando o botão  */
+/*@keyframes - só para brincar um pouquinho de css (ensinado por dpwoficial - youtube - "Minicurso Animações CSS")*/
+@keyframes glow {
+    /* 1. Estado Inicial (0%) */
+    0% {box-shadow: 0 0 10px #fff;}
+    50%{rotate: 155deg ease-in-out; }
+    /*  Retorno ao Estado Inicial (100%) */
+    100% {box-shadow: 0 0 10px #ff0000;}
+}
+
+@keyframes glow-dark {
+    /* 1. Estado Inicial (0%) */
+    0% {rotate: 1deg;
+        box-shadow: 0 0 10px #0f0d0d;}
+    /*  Retorno ao Estado Inicial (100%) */
+    100% {rotate: 360deg; 
+    box-shadow: 0 0 10px #2a0edc;}
+}
+/* 1. Reset e Formato Base */
+#theme-switch {
+    background-color: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 50%; /*deixa o botão redondo*/
+    width: 45px;
+    height: 45px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    transition: all 0.4s ease
+}
+
+#theme-switch:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px #ff0000; 
+    animation: 'glow' 0.5s ease-in;
+}
+
+/* Modo Claro  */
+.light-mode #theme-switch {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    
+}
+
+.light-mode #theme-switch:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 10px #2a0edc;
+    animation: 'glow-dark' 1s ease-in-out; 
+}
+
+/*animação extra para deixar mais legal*/
+#theme-switch:hover svg {
+    transform: rotate(15deg) scale(1.15); 
 }
