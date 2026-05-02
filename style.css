@@ -6,6 +6,7 @@
     /*o ":root é usado para definir cores padrões aq no css"*/
     /* TEMA ESCURO (padrão) */
     --bg-principal: #0a0017;
+    --bg-secundario: #13041a;
     /*essas são as variáveis de cor*/
     --bg-gradient-1: rgb(52, 12, 81);
     --bg-gradient-2: rgba(205, 76, 21, 0.289);
@@ -26,9 +27,10 @@ body.light-mode {
 
 .light-mode {
     /* TEMA CLARO */
-    --bg-principal: #c6c6c6;
-    --bg-gradient-1: rgba(143, 31, 236, 0.1);
-    --bg-gradient-2: rgba(243, 13, 13, 0.1);
+    --bg-principal: #f2deff;
+    --bg-secundario: #a090a7;
+    --bg-gradient-1: rgba(38, 17, 221, 0.1);
+    --bg-gradient-2: rgba(232, 54, 0, 0.1);
     --texto-principal: #1a0625;
     --texto-secundario: #000;
     --card-bg: #c0bfbf;
@@ -490,7 +492,7 @@ p {
 }
 
 #trajetoria {
-    background-color: var(--bg-principal);
+    background-color: var(--bg-secundario);
     color: var(--texto-principal);
     padding: 40px;
     font-family: sans-serif;
@@ -649,7 +651,7 @@ p {
 }
 
 #parte-final {
-    background-color: var(--bg-principal);
+    background-color: var(--bg-secundario);
     height: 100%;
     width: 100%;
 }
@@ -668,7 +670,7 @@ p {
 }
 
 .title-f h6 {
-    color: #939393;
+    color: #e3e3e3;
     font-weight: 100;
     font-size: medium;
     padding-bottom: 0%;
@@ -759,23 +761,24 @@ p {
     /* Altura da barra horizontal */
 }
 
-/* 2. Fundo da barra */
+/*  Fundo da barra */
 ::-webkit-scrollbar-track {
     background: #050a12;
     /* Mesma cor do seu fundo para ela "sumir" */
 }
 
-/* 3. A parte que desliza  */
+/*  A parte que desliza  */
 ::-webkit-scrollbar-thumb {
     background: #30363d;
-    /* Um cinza escuro discreto */
-    border-radius: 10px;
+    /* Um cinza escuro padrão */
+    border-radius: 20px;
     /* Deixa ela arredondada */
     border: 2px solid #050a12;
     /* Cria um espaço ao redor da barra */
+
 }
 
-/* 4. hover para estilizar */
+/* hover para estilizar */
 ::-webkit-scrollbar-thumb:hover {
     background: #630cdd;
 }
@@ -897,15 +900,15 @@ Desktops/Monitores: > 1025px ou 1200px*/
 
 /* --- tema escuro --- */
 .icon-dark {
-    display: none;
+    display: none; /* Esconde a lua quando ta no escuro */
 }
 
-/* Esconde a lua quando ta no escuro */
+
 .icon-light {
-    display: block;
+    display: block; /* Mostra só o sol*/
 }
 
-/* Mostra só o sol*/
+
 
 .icon-light svg {
     fill: #fff;
@@ -930,18 +933,15 @@ Desktops/Monitores: > 1025px ou 1200px*/
 @keyframes glow {
     /* 1. Estado Inicial (0%) */
     0% {box-shadow: 0 0 10px #fff;}
-    50%{rotate: 155deg ease-in-out; }
     /*  Retorno ao Estado Inicial (100%) */
     100% {box-shadow: 0 0 10px #ff0000;}
 }
 
 @keyframes glow-dark {
     /* 1. Estado Inicial (0%) */
-    0% {rotate: 1deg;
-        box-shadow: 0 0 10px #0f0d0d;}
+    0% {box-shadow: 0 0 10px #0f0d0d;}
     /*  Retorno ao Estado Inicial (100%) */
-    100% {rotate: 360deg; 
-    box-shadow: 0 0 10px #2a0edc;}
+    100% {box-shadow: 0 0 20px #2a0edc;}
 }
 /* 1. Reset e Formato Base */
 #theme-switch {
@@ -969,16 +969,16 @@ Desktops/Monitores: > 1025px ou 1200px*/
 .light-mode #theme-switch {
     background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.15);
-    
+    transition: 0.5s ease;
 }
-
+/* modo escuro*/
 .light-mode #theme-switch:hover {
     background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0px 10px #2a0edc;
+    box-shadow: 0 0px 20px #2a0edc; /*como fica a box shadow após a animação acabar*/
     animation: 'glow-dark' 1s ease-in-out; 
 }
 
 /*animação extra para deixar mais legal*/
 #theme-switch:hover svg {
-    transform: rotate(15deg) scale(1.15); 
+    transform: rotate(360deg) scale(1.15); 
 }

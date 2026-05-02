@@ -1,5 +1,5 @@
 // 1. pega o botão do HTML através do ID 'theme-switch' e guarda na constante 'btn' , o const é a constante
-const btn = document.getElementById("theme-switch");
+const btn = document.getElementById("theme-switch"); //ensinado pelo professor
 
 // 2. espera o usuário clicar no botão
 btn.addEventListener("click", () => {
